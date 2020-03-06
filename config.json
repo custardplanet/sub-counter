@@ -1,0 +1,9 @@
+{
+	"server": "server",
+	"port": "port",
+	"channel": "coruscating",
+	"nick": "bortybot",
+	"oauth": "token",
+	"subgoal": "5",
+	"message": "Thank you so much!"
+}
