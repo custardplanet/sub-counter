@@ -1,9 +1,9 @@
 {
 	"server": "irc.chat.twitch.tv",
 	"port": "6667",
-	"channel": "coruscating",
-	"nick": "bortybot",
-	"oauth": "",
+	"channel": "channelname",
+	"nick": "botname",
+	"oauth": "oauth token",
 	"subgoal": "5",
 	"message": "Thank you so much!"
 }
