@@ -10,7 +10,7 @@ class IRC:
         self.irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
  
     def send(self, chan, msg):
-        self.irc.send(("PRIVMSG " + chan + " :" + msg + "\r\n").encode())
+        self.irc.send(("PRIVMSG #" + chan + " :" + msg + "\r\n").encode())
  
     def connect(self, server, port, channels, nick, oauth):
         print("Connecting to", server)
@@ -19,7 +19,6 @@ class IRC:
         self.irc.send(("NICK " + nick + "\r\n").encode())               
         for channel in channels: 
             self.irc.send(("JOIN #" + channel + "\r\n").encode())
-#        self.irc.send(("CAP REQ :twitch.tv/membership\r\n").encode())
         self.irc.send(("CAP REQ :twitch.tv/tags\r\n").encode())
         self.irc.send(("CAP REQ :twitch.tv/commands\r\n").encode())
 
