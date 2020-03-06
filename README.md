@@ -1,6 +1,6 @@
 # Gift Sub Counter
 
-This is a small Twitch chat bot that can track gift subs in your channel, and say a message in chat when a user has gifted a certain amount of subs (configured by you). The number of subs is stored in a sqlite3 database, which you can query to review which users have gifted however many subs.
+This is a small Twitch chat bot that can track gift subs in your channel, and say a message in chat when a user has cumulatively gifted a certain amount of subs (configured by you). The number of subs is stored in a sqlite3 database, which you can query to review which users have gifted however many subs.
 
 ## Installation
 These instructions are intended for Windows 10. You can obviously run this on Linux as well, but if you have the means to do that, you probably don't need setup instructions.
@@ -43,3 +43,5 @@ To run the bot, open a command prompt and change directories to the location of 
 cd \Users\Tom\sub-counter-master
 ```
 Execute the script by typing `python bot.py`.
+
+If you find that you would like to reset sub numbers (perhaps per stream, weekly, or monthly), simply delete the `subs.db` file that is created in the directory with the other files.
