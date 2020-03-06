@@ -2,6 +2,9 @@
 
 This is a small Twitch chat bot that can track gift subs in your channel, and say a message in chat when a user has cumulatively gifted a certain amount of subs (configured by you). The number of subs is stored in a sqlite3 database, which you can query to review which users have gifted however many subs.
 
+## Use Cases
+Perhaps you want to send a postcard or a sticker to every use who gifts 10 subs in your channel, or do something else once a user has gifted whatever number of subscriptions. This bot can help you with that, by automatically keeping track of, and notifying you in chat, when a user passes that gift sub threshold.
+
 ## Installation
 These instructions are intended for Windows 10. You can obviously run this on Linux as well, but if you have the means to do that, you probably don't need setup instructions.
 
