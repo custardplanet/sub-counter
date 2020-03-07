@@ -48,3 +48,10 @@ cd \Users\Tom\sub-counter-master
 Execute the script by typing `python bot.py`.
 
 If you find that you would like to reset sub numbers (perhaps per stream, weekly, or monthly), simply delete the `subs.db` file that is created in the directory with the other files.
+
+## View the data
+If you'd like to review how many subs users have gifted in your channel while the bot was running, you can do so by running the provided export script (change directories to the folder containing the script as in the previous step).
+```
+python export_to_csv.py
+```
+This will create a csv export from the sqlite database that you can open with Excel or similar. Of course, you can also query the sqlite database directly, if you're familiar with how to do that.
