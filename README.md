@@ -24,7 +24,7 @@ Inside of this folder, you will find a file called `config.json.dist`. Rename th
 - Change the `channel` value to the name of your channel on Twitch.
 - Change the `nick` value to the name of the account you would like to say the messages in chat (your own username, or your bot. This will not work with a bot like Nightbot, only a bot you control the account of).
 - Change the `subgoal` value to the number of subs you would like to trigger a message.
-- Change the `message` value to the message you would like the bot to say when someone gifts `subgoal` number of subs.
+- Change the `message` value to the message you would like the bot to say when someone gifts `subgoal` number of subs. `{username}` will be replaced with the users username in the message. Leave this blank (empty quotes `""`) if you don't want a message displayed.
 - To get the value of the `oauth` field, visit [this webpage](https://www.twitchapps.com/tmi/). Make sure you're signed in as the account you want to use, click Connect, then Authorize, and then get the value from the next page.
 
 Here is what a completed `config.json` file will look like
@@ -36,7 +36,7 @@ Here is what a completed `config.json` file will look like
     "nick": "barkeith",
     "oauth": "oauth:asdfjkl123456",
     "subgoal": "5",
-    "message": "Thank you so much for gifting those subs! Please message a moderator to redeem your reward."
+    "message": "Thank you {username} for gifting those subs! Please message a moderator to redeem your reward."
 }
 ```
 

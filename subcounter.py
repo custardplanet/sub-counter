@@ -23,7 +23,6 @@ class SubCounter:
 
         cursor.execute('SELECT username, count FROM subs WHERE username = ?', (event['tags']['login'],))
         row = cursor.fetchone()
-        print(row)
 
         if not row:
             cursor.execute('INSERT INTO subs VALUES (?, 1)', (event['tags']['login'],))
@@ -31,9 +30,9 @@ class SubCounter:
             cursor.execute('UPDATE subs SET count = count + 1 WHERE username = ?', (event['tags']['login'],))
 
             # compare post-incremented sub count
-            if int(row[1] + 1) == int(self.config['subgoal']):
+            if int(row[1] + 1) == int(self.config['subgoal']) and self.config['message']:
                 print('someone gifted enough subs!')
-                self.irc.send(self.config['channel'], self.config['message'])
+                self.irc.send(self.config['channel'], self.config['message'].format(username=event['tags']['login']))
 
         conn.commit()
         cursor.close()
