@@ -41,7 +41,7 @@ Here is what a completed `config.json` file will look like
 ```
 
 ## Run the bot
-To run the bot, open a command prompt and change directories to the location of the files from the previous step.
+To run the bot, open a command prompt and change directories to the location of the files from the previous step. When you open a command prompt, you will be on the C: drive by default. If you are storing the files on a different drive, for example your F: drive, first type `F:` in the command prompt to change to that drive before executing the following command.
 ```
 cd \Users\Tom\sub-counter-master
 ```
