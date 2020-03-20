@@ -33,6 +33,7 @@ class IRC:
             tags = line[1:].split(' ')[0]
             event['tags'] = dict([tag.split('=') for tag in tags.split(';')])
             line = line.split(' ', 1)
+            print('Debug:', line)
             line = line[1]
 
         if line.startswith(':'):

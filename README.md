@@ -17,7 +17,7 @@ C:\Users\Tom>python --version
 Python 3.8.2
 ```
 ### Configuration
-Next, you need to get the code onto your computer. If you're familiar with git, clone the repository. If you're not familiar with git, look for the "Clone or Download" button, click it, and click Download ZIP. Extract the folder in that zip file to somewhere on your computer (e.g. your user folder, `C:/Users/Tom/sub-counter-master`).
+Next, you need to get the code onto your computer. If you're familiar with git, clone the repository. If you're not familiar with git, look for the "Clone or Download" button on this page, click it, and click Download ZIP. Extract the folder in that zip file to somewhere on your computer (e.g. your user folder, `C:/Users/Tom/sub-counter-master`).
 
 Inside of this folder, you will find a file called `config.json.dist`. Rename this file to `config.json` and open it with a text editor (e.g. Notepad, Notepad++, Sublime Text 3).
 

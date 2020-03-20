@@ -5,5 +5,7 @@
 	"nick": "botname",
 	"oauth": "oauth token",
 	"subgoal": "5",
-	"message": "Thank you so much!"
+	"message": "Thank you so much!",
+    "failed_vote_message": "Sorry {username}, you don't have any points to vote with!",
+    "options": ["thing 1", "thing 2", "thing 3"]
 }
