@@ -94,7 +94,7 @@ class SubCounter:
             with open('counters/' + choice + '.txt', 'w') as f:
                 f.write(str(total + points))
 
-            self.irc.send(self.config['channel'], "Thank you for voting for {option}! The point totals will be updated soon corusHype".format(option=choice))
+            self.irc.send(self.config['channel'], self.config['successful_vote_message'].format(option=choice))
 
             cursor.close()
             conn.close()
@@ -104,13 +104,13 @@ class SubCounter:
             events = self.irc.read_events()
 
             for event in events:
-                if (event['code'] == 'PRIVMSG' and
-                    event['message'].startswith('!test')):
-                    event['tags']['login'] = 'spoongalaxy'
+                #if (event['code'] == 'PRIVMSG' and
+                    #event['message'].startswith('!test')):
+                    #event['tags']['login'] = 'spoongalaxy'
 
-#                if (event['code'] == 'USERNOTICE' and
-                    #'msg-id' in event['tags'] and
-                    #event['tags']['msg-id'] == 'subgift'):
+                if (event['code'] == 'USERNOTICE' and
+                    'msg-id' in event['tags'] and
+                    event['tags']['msg-id'] == 'subgift'):
                     #
                     self.handle_sub_counter(event)
                     self.handle_sub_points(event)

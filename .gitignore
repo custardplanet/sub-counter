@@ -2,3 +2,4 @@ config.json
 subs.db
 __pycache__
 *.pyc
+counters/*.txt

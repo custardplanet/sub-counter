@@ -36,7 +36,9 @@ Here is what a completed `config.json` file will look like
     "nick": "barkeith",
     "oauth": "oauth:asdfjkl123456",
     "subgoal": "5",
-    "message": "Thank you {username} for gifting those subs! Please message a moderator to redeem your reward."
+    "message": "Thank you {username} for gifting those subs! Please message a moderator to redeem your reward.",
+    "failed_vote_message": "Sorry {username}< you don't have any points to vote with!",
+    "options": ["foo", "bar", "baz"]
 }
 ```
 
