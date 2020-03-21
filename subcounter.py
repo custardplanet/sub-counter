@@ -116,6 +116,12 @@ class SubCounter:
         cursor.execute('INSERT INTO votes VALUES (?, ?, ?)', (username, choice, points))
         conn.commit()
 
+        with open('counters/' + choice + '.txt', 'r') as f:
+            total = int(f.read())
+
+        with open('counters/' + choice + '.txt', 'w') as f:
+            f.write(str(total + points))
+
         self.irc.send(self.config['channel'], self.config['successful_vote_message'].format(option=choice))
 
         cursor.close()
