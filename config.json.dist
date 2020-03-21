@@ -8,5 +8,6 @@
     "message": "Thank you so much!",
     "failed_vote_message": "Sorry {username}, you don't have any points to vote with!",
     "successful_vote_message": "Thank you for voting for {option}! The point totals will be updated soon corusHype",
+    "admins": ["spoongalaxy", "coruscating"],
     "options": ["thing 1", "thing 2", "thing 3"]
 }

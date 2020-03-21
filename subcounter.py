@@ -69,7 +69,7 @@ class SubCounter:
         cursor = conn.cursor()
 
         username = event['tags']['display-name']
-        
+
         cursor.execute('SELECT username, count FROM points WHERE username = ?', (username,))
         row = cursor.fetchone()
 
@@ -99,6 +99,28 @@ class SubCounter:
             cursor.close()
             conn.close()
 
+    def handle_admin_vote(self, event):
+        # expected message format: !adminvote username option points
+        conn = sqlite3.connect('subs.db')
+        cursor = conn.cursor()
+
+        msg = event['message'].split()
+        username = msg[1].lower()
+        choice = msg[2].lower()
+        points = int(msg[3])
+
+        if choice not in [option.lower() for option in self.config['options']]:
+            self.irc.send(self.config['channel'], "Sorry, that's not an option! Please try again.")
+            return
+
+        cursor.execute('INSERT INTO votes VALUES (?, ?, ?)', (username, choice, points))
+        conn.commit()
+
+        self.irc.send(self.config['channel'], self.config['successful_vote_message'].format(option=choice))
+
+        cursor.close()
+        conn.close()
+
     def run_forever(self):
         while True:
             events = self.irc.read_events()
@@ -118,3 +140,7 @@ class SubCounter:
                 elif (event['code'] == 'PRIVMSG' and
                       event['message'].startswith('!vote')):
                     self.handle_vote(event)
+                elif (event['code'] == 'PRIVMSG' and
+                      event['tags']['display-name'] in self.config['admins'] and
+                      event['message'].startswith('!adminvote')):
+                    self.handle_admin_vote(event)
