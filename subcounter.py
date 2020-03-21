@@ -20,7 +20,7 @@ class SubCounter:
         conn.close()
 
         for option in config['options']:
-            filename = 'counters/' + option + '.txt'
+            filename = 'counters/' + option.lower() + '.txt'
             try:
                 f = open(filename, 'r')
             except:
@@ -79,7 +79,7 @@ class SubCounter:
             choice = event['message'].split()[1]
             choice = choice.lower()
 
-            if choice not in self.config['options']:
+            if choice not in [option.lower() for option in self.config['options']]:
                 self.irc.send(self.config['channel'], "Sorry, that's not an option! Please try again.")
                 return
 
@@ -104,6 +104,7 @@ class SubCounter:
             events = self.irc.read_events()
 
             for event in events:
+                # uncomment for testing
                 #if (event['code'] == 'PRIVMSG' and
                     #event['message'].startswith('!test')):
                     #event['tags']['login'] = 'spoongalaxy'
