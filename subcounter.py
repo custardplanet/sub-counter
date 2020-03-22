@@ -79,7 +79,7 @@ class SubCounter:
             choice = event['message'].split()
 
             if len(choice) > 1:
-                choice = choice[1]
+                choice = choice[1].lower()
             else:
                 self.irc.send(self.config['channel'], "Please type !vote <option> to submit your vote!")
                 return
