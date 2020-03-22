@@ -23,6 +23,8 @@ class IRC:
         self.irc.send(("CAP REQ :twitch.tv/commands\r\n").encode())
 
     def parse_line(self, line):
+        print('Debug:', line)
+
         event = {
             'tags': '',
             'code': '',
@@ -33,7 +35,6 @@ class IRC:
             tags = line[1:].split(' ')[0]
             event['tags'] = dict([tag.split('=') for tag in tags.split(';')])
             line = line.split(' ', 1)
-            print('Debug:', line)
             line = line[1]
 
         if line.startswith(':'):
@@ -60,11 +61,16 @@ class IRC:
         return event
 
     def read_events(self):
-        lines = self.irc.recv(2048)
-        lines = lines.decode()
+        lines = ''
 
-        print(lines)
-        print()
+        while True:
+            message = self.irc.recv(2048)
+            message = message.decode()
+            print(message)
+
+            lines += message
+            if lines.endswith('\r\n'):
+                break
 
         lines = filter(None, lines.split('\r\n'))
         events = [self.parse_line(line) for line in lines]

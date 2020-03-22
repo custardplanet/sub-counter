@@ -68,7 +68,7 @@ class SubCounter:
         conn = sqlite3.connect('subs.db')
         cursor = conn.cursor()
 
-        username = event['tags']['display-name']
+        username = event['tags']['display-name'].lower()
 
         cursor.execute('SELECT username, count FROM points WHERE username = ?', (username,))
         row = cursor.fetchone()
@@ -76,8 +76,14 @@ class SubCounter:
         if not row:
             self.irc.send(self.config['channel'], self.config['failed_vote_message'].format(username=username))
         else:
-            choice = event['message'].split()[1]
-            choice = choice.lower()
+            choice = event['message'].split()
+
+            if len(choice) > 1:
+                choice = choice[1]
+            else:
+                self.irc.send(self.config['channel'], "Please type !vote <option> to submit your vote!")
+                return
+
 
             if choice not in [option.lower() for option in self.config['options']]:
                 self.irc.send(self.config['channel'], "Sorry, that's not an option! Please try again.")
@@ -105,6 +111,11 @@ class SubCounter:
         cursor = conn.cursor()
 
         msg = event['message'].split()
+
+        if len(msg) < 4:
+            self.irc.send(self.config['channel'], "Admin vote with !adminvote username option points")
+            return
+
         username = msg[1].lower()
         choice = msg[2].lower()
         points = int(msg[3])
