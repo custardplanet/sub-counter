@@ -150,7 +150,7 @@ class SubCounter:
 
                 if (event['code'] == 'USERNOTICE' and
                     'msg-id' in event['tags'] and
-                    event['tags']['msg-id'] == 'subgift'):
+                    event['tags']['msg-id'] in ['sub', 'resub', 'subgift']):
                     #
                     self.handle_sub_counter(event)
                     self.handle_sub_points(event)
